@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Vehicle</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="table-container">
+    <h1>Edit Vehicle</h1>
+    <form th:action="@{/vehicles/edit/{id}(id=${vehicle.vehicleId})}" method="post">
+        <input type="hidden" th:value="${vehicle.vehicleId}" name="vehicleId">
+        <label for="vehicleName">Vehicle Name:</label>
+        <input type="text" id="vehicleName" name="vehicleName" th:value="${vehicle.vehicleName}" required>
+        <br>
+        <label for="vehicleModel">Vehicle Model:</label>
+        <input type="text" id="vehicleModel" name="vehicleModel" th:value="${vehicle.vehicleModel}" required>
+        <br>
+        <label for="yearOfManufacture">Year of Manufacture:</label>
+        <input type="number" id="yearOfManufacture" name="yearOfManufacture" th:value="${vehicle.yearOfManufacture}" required>
+        <br>
+        <label for="vehicleColor">Vehicle Color:</label>
+        <input type="text" id="vehicleColor" name="vehicleColor" th:value="${vehicle.vehicleColor}">
+        <br>
+        <button type="submit">Update Vehicle</button>
+    </form>
+    <br>
+    <a href="/vehicles">Back to Catalog</a>
+</div>
+</body>
+</html>

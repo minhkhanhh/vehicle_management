@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vehicle Catalog</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="table-container">
+    <h1>Catalogues</h1>
+    <table>
+        <tr>
+            <th>No</th>
+            <th>Vehicle Id</th>
+            <th>Vehicle Name</th>
+            <th>Vehicle Model</th>
+            <th>Year of Manufacture</th>
+            <th>Vehicle Color</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="vehicle, iterStat : ${vehicles}">
+            <td th:text="${iterStat.index + 1}"></td>
+            <td th:text="${vehicle.vehicleId}"></td>
+            <td th:text="${vehicle.vehicleName}"></td>
+            <td th:text="${vehicle.vehicleModel}"></td>
+            <td th:text="${vehicle.yearOfManufacture}"></td>
+            <td th:text="${vehicle.vehicleColor}"></td>
+            <td>
+                <form th:action="@{/vehicles/delete/{id}(id=${vehicle.vehicleId})}" method="post" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+                <a th:href="@{/vehicles/edit/{id}(id=${vehicle.vehicleId})}">
+                    <button>Edit</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+    <a href="/vehicles/add">
+        <button>Add New Vehicle</button>
+    </a>
+</div>
+</body>
+</html>
